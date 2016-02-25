@@ -1,0 +1,21 @@
+'fileTypes': [
+  'alpha.moos'
+  'moos'
+]
+'name': 'MOOS Configuration File'
+'patterns': [
+  {
+    'include': '#items'
+  }
+]
+'repository':
+  'constants':
+    'match': '.*'
+    'name': 'constant.language.boolean.moos'
+  'items':
+    'patterns': [
+      {
+        'include': '#constants'
+      }
+    ]
+'scopeName': 'source.moos'
