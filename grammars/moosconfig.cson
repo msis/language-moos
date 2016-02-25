@@ -1,5 +1,4 @@
 'fileTypes': [
-  'alpha.moos'
   'moos'
 ]
 'name': 'MOOS Configuration File'
@@ -10,12 +9,22 @@
 ]
 'repository':
   'constants':
-    'match': '.*'
+    'match': '(?i)(true|false)'
     'name': 'constant.language.boolean.moos'
+  'comments':
+    'begin': '//'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.moos'
+    'end': '\\n'
+    'name': 'comment.line.moos'
   'items':
     'patterns': [
       {
         'include': '#constants'
+      }
+      {
+        'include': '#comments'
       }
     ]
 'scopeName': 'source.moos'
