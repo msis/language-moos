@@ -1,7 +1,9 @@
+'scopeName': 'source.moos'
+'name': 'MOOS Configuration File'
 'fileTypes': [
   'moos'
+  '_moos'
 ]
-'name': 'MOOS Configuration File'
 'patterns': [
   {
     'include': '#items'
@@ -11,6 +13,17 @@
   'constants':
     'match': '(?i)(true|false)'
     'name': 'constant.language.boolean.moos'
+
+  'includes':
+    'begin': '^\\s*((#)\\s*(include|import))\\b\\s*'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.directive.$3.c'
+      '2':
+        'name': 'punctuation.definition.directive.c'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.preprocessor.include.c'
+
   'comments':
     'begin': '//'
     'beginCaptures':
@@ -18,6 +31,7 @@
         'name': 'punctuation.definition.comment.moos'
     'end': '\\n'
     'name': 'comment.line.moos'
+
   'items':
     'patterns': [
       {
@@ -26,5 +40,7 @@
       {
         'include': '#comments'
       }
+      {
+        'include': '#includes'
+      }
     ]
-'scopeName': 'source.moos'
