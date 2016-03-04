@@ -8,21 +8,46 @@
   {
     'include': '#items'
   }
-]
-'repository':
-  'constants':
+  {
     'match': '(?i)(true|false)'
     'name': 'constant.language.boolean.moos'
+  }
 
-  'includes':
-    'begin': '^\\s*((#)\\s*(include|import))\\b\\s*'
+]
+'repository':
+  'generalconfigs':
+    'begin': '(Server(Host|Port)|Community|MOOSTimeWarp|(Lat|Long)Origin|Simulator)\\s*=\\s*(\\S*)'
     'beginCaptures':
       '1':
-        'name': 'keyword.control.directive.$3.c'
-      '2':
-        'name': 'punctuation.definition.directive.c'
+        'name': 'storage.type.moos'
+      '4':
+        'name': 'constant.other.moos'
     'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
-    'name': 'meta.preprocessor.include.c'
+    'name': 'meta.function.moos'
+
+  'processconfigs':
+    'begin': '(ProcessConfig)\\b\\s*=\\s*(\\w*)\\s*~?\\s*(\\w*)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.function.moos'
+      '2':
+        'name': 'string.other.funtion.moos'
+      '3':
+        'name': 'constant.language.moos'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.function.moos'
+
+  'includes':
+    'begin': '^\\s*((#)\\s*(include))\\b\\s*(\\S*)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.moos'
+      '2':
+        'name': 'punctuation.definition.directive.moos'
+      '4':
+        'name': 'string.unquoted.moos'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.preprocessor.include.moos'
 
   'comments':
     'begin': '//'
@@ -35,7 +60,10 @@
   'items':
     'patterns': [
       {
-        'include': '#constants'
+        'include': '#processconfigs'
+      }
+      {
+        'include': '#generalconfigs'
       }
       {
         'include': '#comments'
