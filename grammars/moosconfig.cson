@@ -21,12 +21,22 @@
       '1':
         'name': 'storage.type.moos'
       '4':
-        'name': 'constant.other.moos'
+        'name': 'constant.numeric.moos'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.function.moos'
+
+  'defaultconfigs':
+    'begin': '(?i)\\b(((Max)?App|Comms)Tick|IterateMode)\\s*=\\s*(\\w+)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.moos'
+      '4':
+        'name': 'constant.numeric.moos'
     'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
     'name': 'meta.function.moos'
 
   'processconfigs':
-    'begin': '\\b(ProcessConfig)\\b\\s*=\\s*(\\w*)(\\s*~\\s*(\\w*))?'
+    'begin': '\\b(ProcessConfig)\\b\\s*=\\s*(\\w+)(\\s*~\\s*(\\w+))?'
     'beginCaptures':
       '1':
         'name': 'storage.function.moos'
@@ -56,7 +66,7 @@
         'name': 'meta.function.moos'
       }
       {
-        'begin': '\\b(MSBetweenLaunches)\\s*=\\s*(\\d*)'
+        'begin': '\\b(MSBetweenLaunches)\\s*=\\s*(\\d+)'
         'beginCaptures':
           '1':
             'name': 'storage.type.moos'
@@ -91,6 +101,9 @@
     'patterns': [
       {
         'include': '#antlerconfig'
+      }
+      {
+        'include': '#defaultconfigs'
       }
       {
         'include': '#processconfigs'
