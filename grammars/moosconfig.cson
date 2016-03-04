@@ -6,17 +6,17 @@
 ]
 'patterns': [
   {
-    'include': '#items'
-  }
-  {
-    'match': '(?i)(true|false)'
+    'match': '\\b(true|false|TRUE|FALSE)\\b'
     'name': 'constant.language.boolean.moos'
   }
-
+  {
+    'include': '#items'
+  }
 ]
+
 'repository':
   'generalconfigs':
-    'begin': '(Server(Host|Port)|Community|MOOSTimeWarp|(Lat|Long)Origin|Simulator)\\s*=\\s*(\\S*)'
+    'begin': '\\b(Server(Host|Port)|Community|MOOSTimeWarp|(Lat|Long)Origin|Simulator)\\s*=\\s*(\\S*)'
     'beginCaptures':
       '1':
         'name': 'storage.type.moos'
@@ -26,16 +26,46 @@
     'name': 'meta.function.moos'
 
   'processconfigs':
-    'begin': '(ProcessConfig)\\b\\s*=\\s*(\\w*)\\s*~?\\s*(\\w*)'
+    'begin': '\\b(ProcessConfig)\\b\\s*=\\s*(\\w*)(\\s*~\\s*(\\w*))?'
     'beginCaptures':
       '1':
         'name': 'storage.function.moos'
       '2':
-        'name': 'string.other.funtion.moos'
-      '3':
+        'name': 'string.other.function.moos'
+      '4':
         'name': 'constant.language.moos'
     'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
     'name': 'meta.function.moos'
+
+  'antlerconfig':
+    'patterns': [
+      {
+        'begin': '\\b(Run)\\s*=\\s*(\\w*)(\\s*@\\s*(NewConsole)\\s*=\\s*(\\w*)(\\s*~\\s*(\\w*))?)?'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.moos'
+          '2':
+            'name': 'string.other.function.moos'
+          '4':
+            'name': 'storage.type.moos'
+          '5':
+            'name': 'constant.language.boolean.moos'
+          '7':
+            'name': 'constant.language.moos'
+        'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+        'name': 'meta.function.moos'
+      }
+      {
+        'begin': '\\b(MSBetweenLaunches)\\s*=\\s*(\\d*)'
+        'beginCaptures':
+          '1':
+            'name': 'storage.type.moos'
+          '2':
+            'name': 'constant.numeric.moos'
+        'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+        'name': 'meta.function.moos'
+      }
+    ]
 
   'includes':
     'begin': '^\\s*((#)\\s*(include))\\b\\s*(\\S*)'
@@ -59,6 +89,9 @@
 
   'items':
     'patterns': [
+      {
+        'include': '#antlerconfig'
+      }
       {
         'include': '#processconfigs'
       }
