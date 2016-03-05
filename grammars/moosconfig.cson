@@ -36,7 +36,7 @@
     'name': 'meta.function.moos'
 
   'processconfigs':
-    'begin': '\\b(ProcessConfig)\\b\\s*=\\s*(\\w+)(\\s*~\\s*(\\w+))?'
+    'begin': '\\b(?i)(ProcessConfig)\\b\\s*=\\s*(\\w+)(\\s*~\\s*(\\w+))?'
     'beginCaptures':
       '1':
         'name': 'storage.function.moos'
