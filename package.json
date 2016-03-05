@@ -1,6 +1,6 @@
 {
   "name": "language-moos",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Language support for MOOS middleware and MOOS-IvP autonomy suite.",
   "repository": "https://github.com/msis/language-moos",
   "license": "MIT",
