@@ -1,5 +1,5 @@
 # language-MOOS package
 
-Syntax highlighting for MOOS configuration files in Atom.
+Language support for MOOS middleware and MOOS-IvP autonomy suite files in Atom.
 
-![A screenshot of your theme](https://f.cloud.github.com/assets/69169/2289498/4c3cb0ec-a009-11e3-8dbd-077ee11741e5.gif)
+![Screenshot of the highlighting](Screenshot.v0.1.0.png)

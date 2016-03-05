@@ -1,13 +1,13 @@
 {
   "name": "language-moos",
-  "version": "0.1.0",
-  "description": "Syntax highlighting for MOOS middleware.",
-  "repository": "https://github.com/atom/moos-syntax",
+  "version": "0.0.0",
+  "description": "Language support for MOOS middleware and MOOS-IvP autonomy suite.",
+  "repository": "https://github.com/msis/language-moos",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.0.0"
   },
   "dependencies": {},
   "readmeFilename": "README.md",
-  "readme": "Syntax MOOS"
+  "readme": "Language support for MOOS and MOOS-IvP"
 }
