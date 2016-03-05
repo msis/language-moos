@@ -1,0 +1,102 @@
+'scopeName': 'source.bhv'
+'name': 'Behavior Configuration File'
+'fileTypes': [
+  'bhv'
+  '_bhv'
+]
+'patterns': [
+  {
+    'match': '\\b(true|false|TRUE|FALSE)\\b'
+    'name': 'constant.language.boolean.bhv'
+  }
+  {
+    'include': '#items'
+  }
+]
+
+'repository':
+  'initconfigs':
+    'begin': '\\b(initialize)\\s*(\\S+)\\s*=\\s*(\\S*)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.bhv'
+      '2':
+        'name': 'string.unquoted.bhv'
+      '3':
+        'name': 'constant.other.bhv'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.function.bhv'
+
+  'defaultconfigs':
+    'begin': '(?i)\\b(name|priority|duration(_(status|reset|idle_decay)?)?|post_mapping|condition|pwt|updates|nostarve|perpetual|templating|((in)?active|run|idle|end)flag)\\s*=\\s*(\\w+)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.bhv'
+      '6':
+        'name': 'constant.numeric.bhv'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.function.bhv'
+
+  'modeconfigs':
+    'begin': '(?i)\\b(set)\\s*(MODE)\\s*=\\s*(\\w+)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.bhv'
+      '2':
+        'name': 'constant.language.bhv'
+      '3':
+        'name': 'string.unquoted.bhv'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.function.bhv'
+
+  'bhvconfigs':
+    'begin': '\\b(?i)(Behavior)\\b\\s*=\\s*(\\w+)'
+    'beginCaptures':
+      '1':
+        'name': 'storage.function.bhv'
+      '2':
+        'name': 'string.other.function.bhv'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.function.bhv'
+
+  'includes':
+    'begin': '^\\s*((#)\\s*(include))\\b\\s*(\\S*)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.bhv'
+      '2':
+        'name': 'punctuation.definition.directive.bhv'
+      '4':
+        'name': 'string.unquoted.bhv'
+    'end': '(?=(?://|/\\*))|(?<!\\\\)(?=\\n)'
+    'name': 'meta.preprocessor.include.bhv'
+
+  'comments':
+    'begin': '//'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.bhv'
+    'end': '\\n'
+    'name': 'comment.line.bhv'
+
+  'items':
+    'patterns': [
+      {
+        'include': '#bhvconfigs'
+      }
+      {
+        'include': '#initconfigs'
+      }
+      {
+        'include': '#defaultconfigs'
+      }
+      {
+        'include': '#modeconfigs'
+      }
+      {
+        'include': '#comments'
+      }
+      {
+        'include': '#includes'
+      }
+    ]
