@@ -1,0 +1,18 @@
+'.moos':
+  'ProcessConfig = … { … }':
+    'prefix': 'proconf'
+    'body': 'ProcessConfig = ${1:pSomething}\n{\n  AppTick   = ${2:4}\n  CommsTick = ${3:4}\n\n  // Your Configuration here\n  ${4}\n}'
+  'ProcessConfig = ANTLER { … }':
+    'prefix': 'antler'
+    'body': 'ProcessConfig = ANTLER\n{\n  MSBetweenLaunches   = ${1:100}\n\n  Run = MOOSDB @ NewConsole = false\n\n  Run = ${2:pSomething} @ NewConsole = false // ~ pSomeAlias\n  ${3}\n}'
+
+'.bhv':
+  'initialize … = …':
+    'prefix': 'init'
+    'body': 'initialize ${1:VARNAME} = ${2:VARVALUE}'
+  'set MODE = … { … }':
+    'prefix': 'set'
+    'body': 'set MODE = ${1:MODE_NAME} {\n  //MODE = PARENTMODE\n  ${2:VARNAME} = ${3:VARVALUE}\n} ${4:COMPLEMENT_MODE_NAME}'
+  'Behavior = … { … }':
+    'prefix': 'bhv'
+    'body': 'Behavior = ${1:BHV_TYPE}\n{\n  name = ${2:bhv_name}\n  pwt = ${3:10}\n\n  //behavior specific configuration\n  ${4}\n}'
