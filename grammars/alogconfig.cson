@@ -1,0 +1,42 @@
+'scopeName': 'source.alog'
+'name': 'MOOS Asychronous Log File'
+'fileTypes': [
+  'alog'
+  'ylog'
+]
+'patterns': [
+  {
+    'include': '#items'
+  }
+]
+
+'repository':
+  'logline':
+    'begin': '^(\\d+.\\d*)\\s*(\\w+)\\s*(\\w+(:\\w*)?)\\s'
+    'beginCaptures':
+      '1':
+        'name': 'constant.numeric.time.alog'
+      '2':
+        'name': 'support.type.var.alog'
+      '3':
+        'name': 'storage.type.source.alog'
+    'end': '\\n'
+    'name': 'meta.string.alog'
+
+  'comments':
+    'begin': '%%'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.alog'
+    'end': '\\n'
+    'name': 'comment.line.alog'
+
+  'items':
+    'patterns': [
+      {
+        'include': '#logline'
+      }
+      {
+        'include': '#comments'
+      }
+    ]
