@@ -1,3 +1,5 @@
 '.moos, .bhv':
   'editor':
     'commentStart': '// '
+    'foldEndPattern': '^\\s*\\}'
+    'increaseIndentPattern': '(?x)^ .* \\{ [^}"\']* $'
