@@ -14,6 +14,10 @@
     'name': 'constant.numeric.moos'
   }
   {
+    'match': '\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b'
+    'name': 'constant.numeric.moos'
+  }
+  {
     'include': '#items'
   }
 ]
